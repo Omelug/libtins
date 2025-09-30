@@ -101,7 +101,7 @@ PDU* PDU::recv_response(PacketSender &, const NetworkInterface &) {
     return 0; 
 }
 
-bool PD\U::matches_response(const uint8_t* /*ptr*/, uint32_t /*total_sz*/) const {
+bool PDU::matches_response(const uint8_t* /*ptr*/, uint32_t /*total_sz*/) const {
     return false;
 }
 
