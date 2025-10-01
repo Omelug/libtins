@@ -50,7 +50,10 @@ Dot11Disassoc::Dot11Disassoc(const uint8_t* buffer, uint32_t total_sz)
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_);
+    stream.read(body_); if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     parse_tagged_parameters(stream);
 }
 
@@ -78,7 +81,10 @@ Dot11AssocRequest::Dot11AssocRequest(const uint8_t* buffer, uint32_t total_sz)
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_);
+    stream.read(body_); if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     parse_tagged_parameters(stream);
 }
 
@@ -106,7 +112,10 @@ Dot11AssocResponse::Dot11AssocResponse(const uint8_t* buffer, uint32_t total_sz)
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_);
+    stream.read(body_); if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     parse_tagged_parameters(stream);
 }
 
@@ -138,7 +147,10 @@ Dot11ReAssocRequest::Dot11ReAssocRequest(const uint8_t* buffer, uint32_t total_s
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_);
+    stream.read(body_); if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     parse_tagged_parameters(stream);
 }
 
@@ -170,7 +182,10 @@ Dot11ReAssocResponse::Dot11ReAssocResponse(const uint8_t* buffer, uint32_t total
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_);
+    stream.read(body_); if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     parse_tagged_parameters(stream);
 }
 

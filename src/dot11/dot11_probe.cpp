@@ -66,7 +66,10 @@ Dot11ProbeResponse::Dot11ProbeResponse(const uint8_t* buffer, uint32_t total_sz)
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_);
+    stream.read(body_); if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     parse_tagged_parameters(stream);
 }
 
