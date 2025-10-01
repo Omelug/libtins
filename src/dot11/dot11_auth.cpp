@@ -86,6 +86,10 @@ Dot11Deauthentication::Dot11Deauthentication(const uint8_t* buffer, uint32_t tot
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
+    if(this->wep()){
+        //TODO parse encrypted data?
+        return;
+    }
     stream.read(body_);
     parse_tagged_parameters(stream);
 }
