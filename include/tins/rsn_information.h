@@ -28,7 +28,7 @@
  */
 
 #include <tins/config.h>
-#include <stdint.h>
+#include <cstdint>
 
 #if !defined(TINS_RSN_INFORMATION) && defined(TINS_HAVE_DOT11)
 #define TINS_RSN_INFORMATION
@@ -228,8 +228,8 @@ public:
      bool RSN_multi_band_RSNA(){ return (capabilities() & 0x0100) != 0;}
      bool RSN_pairwise(){ return (capabilities() & 0x0200) != 0;}
 
-    bool RSN_multi_extended_key_id(){ return (capabilities() & 0x1000) != 0;}
-    bool RSN_ocvc(){ return (capabilities() & 0x2000) != 0;}
+     bool RSN_multi_extended_key_id(){ return (capabilities() & 0x1000) != 0;}
+     bool RSN_ocvc(){ return (capabilities() & 0x2000) != 0;}
 
 
 private:
