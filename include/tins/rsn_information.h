@@ -226,7 +226,7 @@ public:
      bool RSN_MFP_capable(){ return (capabilities() & 0x80) != 0;}
 
      bool RSN_multi_band_RSNA(){ return (capabilities() & 0x0100) != 0;}
-     bool RSN_pairwise(){ return (capabilities() & 0x0200) != 0;}
+     bool RSN_peerkey(){ return (capabilities() & 0x0200) != 0;}
 
      bool RSN_multi_extended_key_id(){ return (capabilities() & 0x1000) != 0;}
      bool RSN_ocvc(){ return (capabilities() & 0x2000) != 0;}
