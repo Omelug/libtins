@@ -228,11 +228,9 @@ public:
      bool RSN_multi_band_RSNA(){ return (capabilities() & 0x0100) != 0;}
      bool RSN_peerkey(){ return (capabilities() & 0x0200) != 0;}
 
-     bool RSN_multi_extended_key_id(){ return (capabilities() & 0x1000) != 0;}
-     bool RSN_ocvc(){ return (capabilities() & 0x2000) != 0;}
+     bool RSN_multi_extended_key_id(){ return (capabilities() & 0x2000) != 0;}
+     bool RSN_ocvc(){ return (capabilities() & 0x4000) != 0;}
 
-
-private:
 
 private:
     void init(const uint8_t* buffer, uint32_t total_sz);
