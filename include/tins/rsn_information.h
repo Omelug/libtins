@@ -219,9 +219,9 @@ public:
       */
      bool RSN_pre_auth(){ return (capabilities() & 0x01) != 0;}
      bool RSN_pairwise(){ return (capabilities() & 0x02) != 0;}
-     std::uint8_t RSN_PTKSA_replay(){ return (capabilities() & 0x0c) >> 2;}
+    uint8_t RSN_PTKSA_replay(){ return (capabilities() & 0x0c) >> 2;}
 
-     std::uint8_t RSN_GTKSA_replay(){ return (capabilities() & 0x30) >> 4;}
+     uint8_t RSN_GTKSA_replay(){ return (capabilities() & 0x30) >> 4;}
      bool RSN_MFP_requeired(){ return (capabilities() & 0x40) != 0;}
      bool RSN_MFP_capable(){ return (capabilities() & 0x80) != 0;}
 
