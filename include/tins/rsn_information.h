@@ -28,6 +28,7 @@
  */
 
 #include <tins/config.h>
+#include <stdint.h>
 
 #if !defined(TINS_RSN_INFORMATION) && defined(TINS_HAVE_DOT11)
 #define TINS_RSN_INFORMATION
@@ -212,6 +213,27 @@ public:
       * Constructs an RSNInformation object from a Dot11 tagged option.
       */
      static RSNInformation from_option(const PDUOption<uint8_t, Dot11>& opt);
+
+     /**
+      * RSN capabilities bool functions
+      */
+     bool RSN_pre_auth(){ return (capabilities() & 0x01) != 0;}
+     bool RSN_pairwise(){ return (capabilities() & 0x02) != 0;}
+     std::uint8_t RSN_PTKSA_replay(){ return (capabilities() & 0x0c) >> 2;}
+
+     std::uint8_t RSN_GTKSA_replay(){ return (capabilities() & 0x30) >> 4;}
+     bool RSN_MFP_requeired(){ return (capabilities() & 0x40) != 0;}
+     bool RSN_MFP_capable(){ return (capabilities() & 0x80) != 0;}
+
+     bool RSN_multi_band_RSNA(){ return (capabilities() & 0x0100) != 0;}
+     bool RSN_pairwise(){ return (capabilities() & 0x0200) != 0;}
+
+    bool RSN_multi_extended_key_id(){ return (capabilities() & 0x1000) != 0;}
+    bool RSN_ocvc(){ return (capabilities() & 0x2000) != 0;}
+
+
+private:
+
 private:
     void init(const uint8_t* buffer, uint32_t total_sz);
 
