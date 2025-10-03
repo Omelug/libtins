@@ -28,6 +28,7 @@
  */
 
 #include <tins/dot11/dot11_auth.h>
+#include <tins/dot11/sae_dot11_auth.h>
 #ifdef TINS_HAVE_DOT11
 
 #include <cstring>
@@ -50,8 +51,16 @@ Dot11Authentication::Dot11Authentication(const uint8_t* buffer, uint32_t total_s
 : Dot11ManagementFrame(buffer, total_sz) {
     InputMemoryStream stream(buffer, total_sz);
     stream.skip(management_frame_size());
-    stream.read(body_); if(this->wep()){
+
+    if (this->wep()) {
         //TODO parse encrypted data?
+        return;
+    }
+    stream.read(body_);
+    // SAE parsing: auth_algorithm == 3
+    if (auth_algorithm() == 3) {
+        //TODO
+        //inner_pdu(new SAEDot11Authentication(buffer, total_sz));
         return;
     }
     parse_tagged_parameters(stream);
